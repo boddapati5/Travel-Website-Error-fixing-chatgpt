@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel and Tourism Website</title>
+  <style>
+    /* Global styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      transition: background-color 0.3s ease;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header styles */
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    .toggle {
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      height: 20px;
+      width: 40px;
+      background-color: #fff;
+      border-radius: 25px;
+      border: 1px solid #333;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      transform: translateY(-50%);
+      height: 16px;
+      width: 16px;
+      background-color: #333;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle.active::after {
+      transform: translate(20px, -50%);
+    }
+
+    /* Hero styles */
+    .hero {
+      background: url('hero.jpg') center/cover no-repeat;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 24px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Destinations styles */
+    .destination {
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .destination:hover {
+      transform: translateY(-5px);
+    }
+
+    .destination img {
+      width: 300px;
+      height: auto;
+      margin-right: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .destination:hover img {
+      transform: scale(1.05);
+    }
+
+    .destination-content {
+      flex: 1;
+    }
+
+    .destination h2 {
+      margin-bottom: 10px;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .destination p {
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    .destination a {
+      color: #333;
+      text-decoration: none;
+      background-color: #f4f4f4;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .destination a:hover {
+      background-color: #ccc;
+    }
+
+    /* Footer styles */
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .social-media {
+      margin-bottom: 20px;
+    }
+
+    .social-icon {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: #ffd700;
+    }
+
+    .newsletter input[type="email"],
+    .newsletter button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .newsletter input[type="email"] {
+      width: 200px;
+    }
+
+    .newsletter button {
+      background-color: #ffd700;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .newsletter button:hover {
+      background-color: #ffc107;
+    }
+
+    .legal a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .legal a:hover {
+      color: #ffd700;
+    }
+
+    /* Cart styles */
+    .cart {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #fff;
+      padding: 20px;
+      border-left: 1px solid #ddd;
+      width: 300px;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .cart h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .cart ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cart li {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .cart button {
+      background-color: #ffd700;
+      color: #333;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .cart button:hover {
+      background-color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="logo.png" alt="Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Travel Guides</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="search">
+        <label for="searchInput">Search:</label>
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button onclick="search()">Search</button>
+      </div>
+      <div class="toggle" onclick="toggleMode()" id="toggle"></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Welcome to Our Travel Website</h1>
+      <p>Explore the world with us!</p>
+    </div>
+  </section>
+
+  <section class="destinations">
+    <div class="container">
+      <!-- Destinations content here... -->
+      <div class="destination">
+        <img src="destination1.jpg" alt="Destination 1">
+        <div class="destination-content">
+          <h2>Destination 1</h2>
+          <p>Description of Destination 1</p>
+          <a href="#" onclick="addToCart(1)">Add to Cart</a>
+        </div>
+      </div>
+      <div class="destination">
+        <img src="destination2.jpg" alt="Destination 2">
+        <div class="destination-content">
+          <h2>Destination 2</h2>
+          <p>Description of Destination 2</p>
+          <a href="#" onclick="addToCart(2)">Add to Cart</a>
+        </div>
+      </div>
+      <div class="destination">
+        <img src="destination3.jpg" alt="Destination 3">
+        <div class="destination-content">
+          <h2>Destination 3</h2>
+          <p>Description of Destination 3</p>
+          <a href="#" onclick="addToCart(3)">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="social-media">
+        <a href="#" class="social-icon">Facebook</a>
+        <a href="#" class="social-icon">Twitter</a>
+        <a href="#" class="social-icon">Instagram</a>
+      </div>
+      <div class="newsletter">
+        <h3>Subscribe to Our Newsletter</h3>
+        <form id="newsletterForm">
+          <label for="emailInput">Your Email:</label>
+          <input type="email" id="emailInput" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart">
+    <h2>Cart</h2>
+    <ul id="cartItems"></ul>
+    <button onclick="checkout()">Checkout</button>
+  </div>
+
+  <script>
+    function toggleMode() {
+      var body = document.body;
+      var toggle = document.getElementById('toggle');
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        toggle.classList.remove('active');
+      } else {
+        body.classList.add('dark-mode');
+        toggle.classList.add('active');
+      }
+    }
+
+    function search() {
+      var searchInput = document.getElementById('searchInput').value.toLowerCase();
+      var destinations = document.querySelectorAll('.destination h2');
+
+      destinations.forEach(function(destination) {
+        if (destination.innerText.toLowerCase().includes(searchInput)) {
+          destination.closest('.destination').style.display = 'block';
+        } else {
+          destination.closest('.destination').style.display = 'none';
+        }
+      });
+    }
+
+    var cartItems = [];
+
+    function addToCart(destinationId) {
+      var destination = { id: destinationId, name: 'Destination ' + destinationId, price: destinationId * 100 }; // Example destination data
+      cartItems.push(destination);
+      updateCart();
+    }
+
+    function updateCart() {
+      var cartItemsList = document.getElementById('cartItems');
+      cartItemsList.innerHTML = '';
+      cartItems.forEach(function(item) {
+        var li = document.createElement('li');
+        li.textContent = item.name + ' - $' + item.price;
+        cartItemsList.appendChild(li);
+      });
+    }
+
+    function checkout() {
+      var totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+      alert('Total Price: $' + totalPrice);
+      cartItems = [];
+      updateCart();
+    }
+
+    document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Add code to handle newsletter subscription here
+      alert('Thank you for subscribing to our newsletter!');
+      document.getElementById('newsletterForm').reset();
+    });
+  </script>
+</body>
+</html>
