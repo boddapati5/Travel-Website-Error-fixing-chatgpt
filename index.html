@@ -162,7 +162,7 @@
 
     .destination p {
       margin-bottom: 20px;
-      color: #333; /* Changed text color for improved contrast */
+      color: #333;
     }
 
     .destination a {
@@ -287,11 +287,11 @@
       <img src="logo.png" alt="Logo" class="logo">
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Destinations</a></li>
-          <li><a href="#">Travel Guides</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#" onclick="return confirm('Are you sure you want to navigate to Home?')">Home</a></li>
+          <li><a href="#" onclick="return confirm('Are you sure you want to navigate to Destinations?')">Destinations</a></li>
+          <li><a href="#" onclick="return confirm('Are you sure you want to navigate to Travel Guides?')">Travel Guides</a></li>
+          <li><a href="#" onclick="return confirm('Are you sure you want to navigate to About?')">About</a></li>
+          <li><a href="#" onclick="return confirm('Are you sure you want to navigate to Contact?')">Contact</a></li>
         </ul>
       </nav>
       <div class="search">
@@ -356,8 +356,8 @@
         </form>
       </div>
       <div class="legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <a href="#" onclick="return confirm('Are you sure you want to navigate to Privacy Policy?')">Privacy Policy</a>
+        <a href="#" onclick="return confirm('Are you sure you want to navigate to Terms of Service?')">Terms of Service</a>
       </div>
     </div>
   </footer>
